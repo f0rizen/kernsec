@@ -1,5 +1,4 @@
 # kernsec
-========
 ```
 kernsec 0.1.0
 Check kernel protection mechanisms
