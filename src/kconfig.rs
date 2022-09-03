@@ -17,7 +17,11 @@ fn check_stackprotector(config: &String) {
         } else {
             "Disabled".red().bold()
         },
-        line.blue().bold(),
+        if line == "" {
+            stackprotector.blue().bold()
+        } else {
+            line.blue().bold()
+        }
     );
     if line == "" {
         return;
@@ -38,7 +42,11 @@ fn check_stackprotector(config: &String) {
         } else {
             "Disabled".red().bold()
         },
-        line.blue().bold(),
+        if line == "" {
+            stackprotector.blue().bold()
+        } else {
+            line.blue().bold()
+        }
     );
 }
 
