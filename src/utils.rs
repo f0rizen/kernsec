@@ -3,6 +3,7 @@ use std::fs::File;
 use std::io::prelude::*;
 pub use std::path::PathBuf;
 
+pub static TAB:   usize =  2;
 pub static SIZE1: usize = 40;
 pub static SIZE2: usize = 14;
 
@@ -24,3 +25,11 @@ pub fn read_config(path: PathBuf) -> String {
     }
     return text;
 }
+
+macro_rules! echo {
+    ($msg:expr, $ans:expr, $line:expr) => {
+        println!("{:TAB$}{:SIZE1$}{:SIZE2$}{}", "", $msg, $ans, $line);
+    };
+}
+
+pub(crate) use echo;

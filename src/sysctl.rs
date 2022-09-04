@@ -9,8 +9,7 @@ fn get_ctl(name: &str) -> Result<i32, SysctlError> {
 
 pub fn check() {
     let aslr = get_ctl("kernel.randomize_va_space").unwrap();
-    println!(
-        "{:SIZE1$}{:SIZE2$}{}",
+    echo!(
         "ASLR:",
         if aslr == 2 {
             "Full".green().bold()
@@ -19,11 +18,10 @@ pub fn check() {
         } else {
             "None".red().bold()
         },
-        "kernel.randomize_va_space".blue().bold(),
+        "kernel.randomize_va_space".blue().bold()
     );
     let yama = get_ctl("kernel.yama.ptrace_scope");
-    println!(
-        "{:SIZE1$}{:SIZE2$}{}",
+    echo!(
         "YAMA:",
         match yama {
             Ok(k) => {
@@ -38,8 +36,7 @@ pub fn check() {
         "kernel.yama.ptrace_scope".blue().bold()
     );
     let exec_shield = get_ctl("kernel.exec-shield");
-    println!(
-        "{:SIZE1$}{:SIZE2$}{}",
+    echo!(
         "Exec shield:",
         match exec_shield {
             Ok(k) => {
@@ -62,15 +59,14 @@ pub fn check() {
     ];
     for (msg, ctl) in links {
         let ans = get_ctl(ctl).unwrap();
-        println!(
-            "{:SIZE1$}{:SIZE2$}{}",
+        echo!(
             msg,
             if ans == 1 {
                 "Enabled".green().bold()
             } else {
                 "Disabled".red().bold()
             },
-            ctl.blue().bold(),
+            ctl.blue().bold()
         );
     }
 
@@ -80,8 +76,7 @@ pub fn check() {
     ];
     for (msg, ctl) in files {
         let ans = get_ctl(ctl);
-        println!(
-            "{:SIZE1$}{:SIZE2$}{}",
+        echo!(
             msg,
             match ans {
                 Ok(k) => {

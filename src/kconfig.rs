@@ -9,8 +9,7 @@ fn check_stackprotector(config: &String) {
     } else if config.contains(format!("{}=y", cc_stackprotector).as_str()) {
         line = cc_stackprotector;
     }
-    println!(
-        "{:SIZE1$}{:SIZE2$}{}",
+    echo!(
         "GCC stack protector support:",
         if line != "" {
             "Enabled".green().bold()
@@ -34,8 +33,7 @@ fn check_stackprotector(config: &String) {
     } else if config.contains(format!("{}=y", cc_stackprotector_strong).as_str()) {
         line = cc_stackprotector_strong;
     }
-    println!(
-        "{:SIZE1$}{:SIZE2$}{}",
+    echo!(
         "GCC stack protector strong:",
         if line != "" {
             "Enabled".green().bold()
@@ -54,15 +52,14 @@ pub fn check(path: PathBuf) {
     let config = read_config(path);
 
     check_stackprotector(&config);
-    println!(
-        "{:SIZE1$}{:SIZE2$}{}",
+    echo!(
         "Kernel heap randomization:",
         if !config.contains("CONFIG_COMPAT_BRK=y") {
             "Enabled".green().bold()
         } else {
             "Disabled".red().bold()
         },
-        "CONFIG_COMPAT_BRK".blue().bold(),
+        "CONFIG_COMPAT_BRK".blue().bold()
     );
 
     let configs = vec![
@@ -78,15 +75,14 @@ pub fn check(path: PathBuf) {
         ("Randomize position of memory:", "CONFIG_RANDOMIZE_MEMORY"),
     ];
     for (msg, line) in configs {
-        println!(
-            "{:SIZE1$}{:SIZE2$}{}",
+        echo!(
             msg,
             if config.contains(format!("{}=y", line).as_str()) {
                 "Enabled".green().bold()
             } else {
                 "Disabled".red().bold()
             },
-            line.blue().bold(),
+            line.blue().bold()
         );
     }
 }
