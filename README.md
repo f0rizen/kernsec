@@ -1,6 +1,6 @@
 # kernsec
 ```
-kernsec 0.1.0
+kernsec 0.1.2
 Check kernel protection mechanisms
 For more see https://kernsec.org/
 
