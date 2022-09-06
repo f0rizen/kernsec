@@ -10,3 +10,4 @@ colored = "2.0.0"
 clap = { version = "3.2.17", features = ["derive"] }
 flate2 = "1.0.24"
 sysctl = "0.5.2"
+efivar = "0.2.1"

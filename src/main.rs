@@ -3,6 +3,7 @@ use colored::Colorize;
 use std::path::PathBuf;
 
 mod kconfig;
+mod secureboot;
 mod sysctl;
 pub mod utils;
 
@@ -19,6 +20,10 @@ struct Args {
     /// sysctl checks
     #[clap(long)]
     sysctl: bool,
+
+    /// Secure Boot checks
+    #[clap(long)]
+    secureboot: bool,
 }
 
 fn main() {
@@ -32,5 +37,9 @@ fn main() {
     if args.sysctl {
         println!("\n{} sysctl checks\n", "*".yellow().bold());
         crate::sysctl::check();
+    }
+    if args.secureboot {
+        println!();
+        crate::secureboot::check();
     }
 }

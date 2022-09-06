@@ -27,9 +27,22 @@ pub fn read_config(path: PathBuf) -> String {
 }
 
 macro_rules! echo {
+    ($msg:expr) => {
+        println!("{:TAB$}{}", "", $msg);
+    };
+    ($msg:expr, $ans:expr) => {
+        println!("{:TAB$}{:SIZE1$}{}", "", $msg, $ans);
+    };
     ($msg:expr, $ans:expr, $line:expr) => {
         println!("{:TAB$}{:SIZE1$}{:SIZE2$}{}", "", $msg, $ans, $line);
     };
 }
 
+macro_rules! echoy {
+    ($msg:expr, $ans:expr) => {
+        println!("{} {:SIZE1$}{}", "*".yellow().bold(), $msg, $ans);
+    };
+}
+
 pub(crate) use echo;
+pub(crate) use echoy;
