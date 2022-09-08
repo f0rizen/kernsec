@@ -1,11 +1,12 @@
 pub use colored::Colorize;
-use std::fs::File;
-use std::io::prelude::*;
 pub use std::path::PathBuf;
 
-pub static TAB:   usize =  2;
-pub static SIZE1: usize = 40;
-pub static SIZE2: usize = 14;
+use std::fs::File;
+use std::io::prelude::*;
+
+pub const TAB:   usize =  2;
+pub const SIZE1: usize = 40;
+pub const SIZE2: usize = 14;
 
 fn decode_gz(file: File) -> String {
     use flate2::read::GzDecoder;
