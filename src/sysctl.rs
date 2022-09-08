@@ -10,7 +10,7 @@ fn get_ctl(name: &str) -> Result<i32, SysctlError> {
 pub fn check() {
     let aslr = get_ctl("kernel.randomize_va_space").unwrap();
     echo!(
-        "ASLR:",
+        "ASLR",
         if aslr == 2 {
             "Full".green().bold()
         } else if aslr == 1 {
@@ -22,7 +22,7 @@ pub fn check() {
     );
     let yama = get_ctl("kernel.yama.ptrace_scope");
     echo!(
-        "YAMA:",
+        "YAMA",
         match yama {
             Ok(k) => {
                 if k == 1 {
@@ -37,7 +37,7 @@ pub fn check() {
     );
     let exec_shield = get_ctl("kernel.exec-shield");
     echo!(
-        "Exec shield:",
+        "Exec shield",
         match exec_shield {
             Ok(k) => {
                 if k == 2 {
@@ -54,8 +54,8 @@ pub fn check() {
     );
 
     let links = vec![
-        ("Protected symlinks:", "fs.protected_symlinks"),
-        ("Protected hardlinks:", "fs.protected_hardlinks"),
+        ("Protected symlinks", "fs.protected_symlinks"),
+        ("Protected hardlinks", "fs.protected_hardlinks"),
     ];
     for (msg, ctl) in links {
         let ans = get_ctl(ctl).unwrap();
@@ -71,8 +71,8 @@ pub fn check() {
     }
 
     let files = vec![
-        ("Protected fifos:", "fs.protected_fifos"),
-        ("Protected regular:", "fs.protected_regular"),
+        ("Protected fifos", "fs.protected_fifos"),
+        ("Protected regular", "fs.protected_regular"),
     ];
     for (msg, ctl) in files {
         let ans = get_ctl(ctl);

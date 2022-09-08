@@ -10,7 +10,7 @@ fn check_stackprotector(config: &String) {
         line = cc_stackprotector;
     }
     echo!(
-        "GCC stack protector support:",
+        "GCC stack protector support",
         if line != "" {
             "Enabled".green().bold()
         } else {
@@ -34,7 +34,7 @@ fn check_stackprotector(config: &String) {
         line = cc_stackprotector_strong;
     }
     echo!(
-        "GCC stack protector strong:",
+        "GCC stack protector strong",
         if line != "" {
             "Enabled".green().bold()
         } else {
@@ -53,7 +53,7 @@ pub fn check(path: PathBuf) {
 
     check_stackprotector(&config);
     echo!(
-        "Kernel heap randomization:",
+        "Kernel heap randomization",
         if !config.contains("CONFIG_COMPAT_BRK=y") {
             "Enabled".green().bold()
         } else {
@@ -63,16 +63,16 @@ pub fn check(path: PathBuf) {
     );
 
     let configs = vec![
-        ("Strict /dev/mem access:", "CONFIG_STRICT_DEVMEM"),
-        ("Strict I/O access to /dev/mem:", "CONFIG_IO_STRICT_DEVMEM"),
-        ("Randomize SLAB freelist:", "CONFIG_SLAB_FREELIST_RANDOM"),
-        ("Use a virtually-mapped stack:", "CONFIG_VMAP_STACK"),
-        ("Full reference count validation:", "CONFIG_REFCOUNT_FULL"),
-        ("Hardened usercopy:", "CONFIG_HARDENED_USERCOPY"),
-        ("Harden common str/mem functions:", "CONFIG_FORTIFY_SOURCE"),
-        ("/dev/kmem virtual device support:", "CONFIG_DEVKMEM"),
-        ("Randomize position of kernel:", "CONFIG_RANDOMIZE_BASE"),
-        ("Randomize position of memory:", "CONFIG_RANDOMIZE_MEMORY"),
+        ("Strict /dev/mem access", "CONFIG_STRICT_DEVMEM"),
+        ("Strict I/O access to /dev/mem", "CONFIG_IO_STRICT_DEVMEM"),
+        ("Randomize SLAB freelist", "CONFIG_SLAB_FREELIST_RANDOM"),
+        ("Use a virtually-mapped stack", "CONFIG_VMAP_STACK"),
+        ("Full reference count validation", "CONFIG_REFCOUNT_FULL"),
+        ("Hardened usercopy", "CONFIG_HARDENED_USERCOPY"),
+        ("Harden common str/mem functions", "CONFIG_FORTIFY_SOURCE"),
+        ("/dev/kmem virtual device support", "CONFIG_DEVKMEM"),
+        ("Randomize position of kernel", "CONFIG_RANDOMIZE_BASE"),
+        ("Randomize position of memory", "CONFIG_RANDOMIZE_MEMORY"),
     ];
     for (msg, line) in configs {
         echo!(
