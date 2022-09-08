@@ -4,6 +4,7 @@ use std::path::PathBuf;
 
 mod kconfig;
 mod secureboot;
+mod selinux;
 mod sysctl;
 pub mod utils;
 
@@ -21,6 +22,10 @@ struct Args {
     #[clap(long)]
     sysctl: bool,
 
+    /// SELinux checks
+    #[clap(long)]
+    selinux: bool,
+
     /// Secure Boot checks
     #[clap(long)]
     secureboot: bool,
@@ -37,6 +42,10 @@ fn main() {
     if args.sysctl {
         println!("\n{} sysctl checks\n", "*".yellow().bold());
         crate::sysctl::check();
+    }
+    if args.selinux {
+        println!();
+        crate::selinux::check();
     }
     if args.secureboot {
         println!();
