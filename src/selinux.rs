@@ -1,5 +1,8 @@
 use crate::utils::*;
-use selinux::{current_mode, SELinuxMode, protection_checking_mode, undefined_handling};
+use selinux::{
+    current_mode, SELinuxMode,
+    protection_checking_mode, undefined_handling, UndefinedHandling,
+};
 
 pub fn check() {
     echoy!(
@@ -23,8 +26,8 @@ pub fn check() {
     echo!(
         "Deny unknown",
         match undefined_handling() {
-            Ok(_) => "Enabled".green().bold(),
-            Err(_) => "Disabled".red().bold(),
+            Ok(UndefinedHandling::DeniedAtRunTime) => "Enabled".green().bold(),
+            _ => "Disabled".red().bold(),
         }
     );
 }
