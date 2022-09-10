@@ -27,6 +27,13 @@ pub fn read_config(path: PathBuf) -> String {
     return text;
 }
 
+pub fn get_ctl(name: &str) -> Result<i32, sysctl::SysctlError> {
+    use sysctl::{Ctl, Sysctl};
+    let ctl = Ctl::new(name)?;
+    let val = ctl.value_string()?.parse().unwrap();
+    return Ok(val);
+}
+
 macro_rules! echo {
     ($msg:expr) => {
         println!("{:TAB$}{}", "", $msg);
@@ -40,6 +47,9 @@ macro_rules! echo {
 }
 
 macro_rules! echoy {
+    ($msg:expr) => {
+        println!("{:TAB$} {} {}", "", "*".yellow().bold(), $msg)
+    };
     ($msg:expr, $ans:expr) => {
         println!("{} {:SIZE1$}{}", "*".yellow().bold(), $msg, $ans);
     };

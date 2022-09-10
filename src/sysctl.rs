@@ -1,11 +1,4 @@
 use crate::utils::*;
-use sysctl::{Ctl, Sysctl, SysctlError};
-
-fn get_ctl(name: &str) -> Result<i32, SysctlError> {
-    let ctl = Ctl::new(name)?;
-    let val = ctl.value_string()?.parse().unwrap();
-    return Ok(val);
-}
 
 pub fn check() {
     let aslr = get_ctl("kernel.randomize_va_space").unwrap();

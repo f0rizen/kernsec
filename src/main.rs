@@ -6,6 +6,7 @@ mod kconfig;
 mod secureboot;
 mod selinux;
 mod sysctl;
+mod tainted;
 pub mod utils;
 
 #[derive(Parser)]
@@ -25,6 +26,10 @@ struct Args {
     /// SELinux checks
     #[clap(long)]
     selinux: bool,
+
+    /// Tainted kernel checks
+    #[clap(long)]
+    tainted: bool,
 
     /// Secure Boot checks
     #[clap(long)]
@@ -46,6 +51,10 @@ fn main() {
     if args.selinux {
         println!();
         crate::selinux::check();
+    }
+    if args.tainted {
+        println!();
+        crate::tainted::check();
     }
     if args.secureboot {
         println!();
