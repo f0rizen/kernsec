@@ -1,6 +1,6 @@
 # kernsec
 ```
-kernsec 0.2.0
+kernsec 0.2.1
 Check kernel protection mechanisms
 For more see https://kernsec.org/
 
@@ -13,5 +13,6 @@ OPTIONS:
         --secureboot         Secure Boot checks
         --selinux            SELinux checks
         --sysctl             sysctl checks
+        --tainted            Tainted kernel checks
     -V, --version            Print version information
 ```
