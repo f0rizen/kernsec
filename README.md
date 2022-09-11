@@ -16,7 +16,7 @@ OPTIONS:
         --tainted            Tainted kernel checks
     -V, --version            Print version information
 ```
-# Example output
+## Example output
 ```
 $ ./target/debug/kernsec --sysctl
 * Kernel config: /proc/config.gz
@@ -45,7 +45,7 @@ $ ./target/debug/kernsec --sysctl
   Protected fifos                         Partial       fs.protected_fifos
   Protected regular                       Partial       fs.protected_regular
 ```
-# Build
+## Build
 Install cargo and [libselinux](https://aur.archlinux.org/packages/libselinux)
 
 ```
