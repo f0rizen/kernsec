@@ -31,7 +31,7 @@ pub fn get_ctl(name: &str) -> Result<i32, sysctl::SysctlError> {
 }
 
 #[allow(non_upper_case_globals)]
-pub mod constants {
+mod constants {
     pub const tab:    usize =  2;
     pub const width1: usize = 40;
     pub const width2: usize = 14;
