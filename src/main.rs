@@ -1,5 +1,3 @@
-use colored::Colorize;
-
 pub mod utils;
 
 mod kconfig;
@@ -11,6 +9,8 @@ mod tainted;
 mod options;
 
 fn main() {
+    use colored::Colorize;
+
     let args: options::Args = clap::Parser::parse();
     println!(
         "{} Kernel config: {}\n",
