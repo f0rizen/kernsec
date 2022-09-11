@@ -2,11 +2,7 @@ pub use colored::Colorize;
 pub use std::path::PathBuf;
 
 use std::fs::File;
-use std::io::prelude::*;
-
-pub const TAB:   usize =  2;
-pub const SIZE1: usize = 40;
-pub const SIZE2: usize = 14;
+use std::io::Read;
 
 fn decode_gz(file: File) -> String {
     use flate2::read::GzDecoder;
@@ -34,24 +30,32 @@ pub fn get_ctl(name: &str) -> Result<i32, sysctl::SysctlError> {
     return Ok(val);
 }
 
+#[allow(non_upper_case_globals)]
+pub mod constants {
+    pub const tab:    usize =  2;
+    pub const width1: usize = 40;
+    pub const width2: usize = 14;
+}
+pub use constants::*;
+
 macro_rules! echo {
     ($msg:expr) => {
-        println!("{:TAB$}{}", "", $msg);
+        println!("{:tab$}{}", "", $msg);
     };
     ($msg:expr, $ans:expr) => {
-        println!("{:TAB$}{:SIZE1$}{}", "", $msg, $ans);
+        println!("{:tab$}{:width1$}{}", "", $msg, $ans);
     };
     ($msg:expr, $ans:expr, $line:expr) => {
-        println!("{:TAB$}{:SIZE1$}{:SIZE2$}{}", "", $msg, $ans, $line);
+        println!("{:tab$}{:width1$}{:width2$}{}", "", $msg, $ans, $line);
     };
 }
 
 macro_rules! echoy {
     ($msg:expr) => {
-        println!("{:TAB$} {} {}", "", "*".yellow().bold(), $msg)
+        println!("{:tab$} {} {}", "", "*".yellow().bold(), $msg)
     };
     ($msg:expr, $ans:expr) => {
-        println!("{} {:SIZE1$}{}", "*".yellow().bold(), $msg, $ans);
+        println!("{} {:width1$}{}", "*".yellow().bold(), $msg, $ans);
     };
 }
 
