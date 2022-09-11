@@ -16,3 +16,9 @@ OPTIONS:
         --tainted            Tainted kernel checks
     -V, --version            Print version information
 ```
+# Build
+Install cargo and [libselinux](https://aur.archlinux.org/packages/libselinux)
+
+```
+$ cargo build --release
+```
