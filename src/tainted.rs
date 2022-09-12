@@ -14,12 +14,6 @@ pub fn check() {
         return;
     }
 
-    let mut taints = Vec::new();
-    for i in 0..=18 {
-        if (tainted_ctl >> i) & 1 == 1 {
-            taints.push(i);
-        }
-    }
     let reasons = vec![
         "Proprietary module was loaded",
         "Module was force loaded",
@@ -41,7 +35,9 @@ pub fn check() {
         "Kernel was built with the struct randomization plugin",
         "An in-kernel test has been run",
     ];
-    for i in taints {
-        echoy!(format!("{} (#{})", reasons[i], i));
+    for i in 0..=18 {
+        if (tainted_ctl >> i) & 1 == 1 {
+            echoy!(format!("{} (#{})", reasons[i], i));
+        }
     }
 }
