@@ -15,7 +15,11 @@ fn decode_gz(file: File) -> String {
 pub fn read_config(path: PathBuf) -> String {
     let mut file = File::open(&path).unwrap();
     let mut text = String::new();
-    if path.extension().unwrap() == "gz" {
+
+    let ext = path.extension();
+    use std::ffi::OsStr;
+    let gz_osstr = OsStr::new("gz");
+    if ext == Some(gz_osstr) {
         text = decode_gz(file);
     } else {
         file.read_to_string(&mut text).unwrap();
