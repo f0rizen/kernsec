@@ -70,7 +70,6 @@ pub fn check(path: PathBuf) {
         ("Full reference count validation", "CONFIG_REFCOUNT_FULL"),
         ("Hardened usercopy", "CONFIG_HARDENED_USERCOPY"),
         ("Harden common str/mem functions", "CONFIG_FORTIFY_SOURCE"),
-        ("/dev/kmem virtual device support", "CONFIG_DEVKMEM"),
         ("Randomize position of kernel", "CONFIG_RANDOMIZE_BASE"),
         ("Randomize position of memory", "CONFIG_RANDOMIZE_MEMORY"),
     ];
