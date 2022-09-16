@@ -18,7 +18,7 @@ OPTIONS:
 ```
 ## Example output
 ```
-$ ./target/debug/kernsec --sysctl
+$ ./target/release/kernsec --sysctl
 * Kernel config: /proc/config.gz
 
   GCC stack protector support             Enabled       CONFIG_STACKPROTECTOR
@@ -31,7 +31,6 @@ $ ./target/debug/kernsec --sysctl
   Full reference count validation         Disabled      CONFIG_REFCOUNT_FULL
   Hardened usercopy                       Enabled       CONFIG_HARDENED_USERCOPY
   Harden common str/mem functions         Enabled       CONFIG_FORTIFY_SOURCE
-  /dev/kmem virtual device support        Disabled      CONFIG_DEVKMEM
   Randomize position of kernel            Enabled       CONFIG_RANDOMIZE_BASE
   Randomize position of memory            Enabled       CONFIG_RANDOMIZE_MEMORY
 
