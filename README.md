@@ -1,5 +1,5 @@
 # kernsec
-```
+```txt
 kernsec 1.0.0
 Check kernel protection mechanisms
 For more see https://kernsec.org/
@@ -17,7 +17,7 @@ OPTIONS:
     -V, --version            Print version information
 ```
 ## Example output
-```
+```txt
 $ ./target/release/kernsec --sysctl
 * Kernel config: /proc/config.gz
 
@@ -47,6 +47,6 @@ $ ./target/release/kernsec --sysctl
 ## Build
 Install cargo and [libselinux](https://aur.archlinux.org/packages/libselinux)
 
-```
-$ cargo build --release
+```sh
+cargo build --release
 ```
