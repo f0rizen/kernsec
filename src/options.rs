@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-#[derive(Debug, clap::Parser)]
+#[derive(clap::Parser)]
 #[clap(
     version,
     about = "Check kernel protection mechanisms\nFor more see https://kernsec.org/"
