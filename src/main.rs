@@ -17,7 +17,7 @@ fn main() {
         "*".yellow().bold(),
         args.config.to_str().unwrap().green().bold()
     );
-    crate::kconfig::check(args.config.clone());
+    crate::kconfig::check(args.config);
     if args.sysctl {
         println!("\n{} sysctl checks\n", "*".yellow().bold());
         crate::sysctl::check();
