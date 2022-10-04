@@ -21,18 +21,19 @@ OPTIONS:
 $ ./target/release/kernsec --sysctl
 * Kernel config: /proc/config.gz
 
-  GCC stack protector support             Enabled       CONFIG_STACKPROTECTOR
-  GCC stack protector strong              Enabled       CONFIG_STACKPROTECTOR_STRONG
-  Kernel heap randomization               Enabled       CONFIG_COMPAT_BRK
-  Strict /dev/mem access                  Enabled       CONFIG_STRICT_DEVMEM
-  Strict I/O access to /dev/mem           Enabled       CONFIG_IO_STRICT_DEVMEM
-  Randomize SLAB freelist                 Enabled       CONFIG_SLAB_FREELIST_RANDOM
-  Use a virtually-mapped stack            Enabled       CONFIG_VMAP_STACK
-  Full reference count validation         Disabled      CONFIG_REFCOUNT_FULL
-  Hardened usercopy                       Enabled       CONFIG_HARDENED_USERCOPY
-  Harden common str/mem functions         Enabled       CONFIG_FORTIFY_SOURCE
-  Randomize position of kernel            Enabled       CONFIG_RANDOMIZE_BASE
-  Randomize position of memory            Enabled       CONFIG_RANDOMIZE_MEMORY
+* Kernel version                          5.19.12
+  GCC stack protector support             Enabled       STACKPROTECTOR
+  GCC stack protector strong              Enabled       STACKPROTECTOR_STRONG
+  Kernel heap randomization               Enabled       COMPAT_BRK
+  Strict /dev/mem access                  Enabled       STRICT_DEVMEM
+  Strict I/O access to /dev/mem           Enabled       IO_STRICT_DEVMEM
+  Randomize SLAB freelist                 Enabled       SLAB_FREELIST_RANDOM
+  Use a virtually-mapped stack            Enabled       VMAP_STACK
+  Full reference count validation         Disabled      REFCOUNT_FULL
+  Hardened usercopy                       Enabled       HARDENED_USERCOPY
+  Harden common str/mem functions         Enabled       FORTIFY_SOURCE
+  Randomize position of kernel            Enabled       RANDOMIZE_BASE
+  Randomize position of memory            Enabled       RANDOMIZE_MEMORY
 
 * sysctl checks
 
