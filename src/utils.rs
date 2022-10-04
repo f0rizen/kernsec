@@ -42,6 +42,7 @@ mod constants {
 }
 pub use constants::*;
 
+#[macro_export]
 macro_rules! echo {
     ($msg:expr) => {
         println!("{:tab$}{}", "", $msg);
@@ -54,6 +55,7 @@ macro_rules! echo {
     };
 }
 
+#[macro_export]
 macro_rules! echoy {
     ($msg:expr) => {
         println!("{:tab$} {} {}", "", "*".yellow().bold(), $msg)
@@ -63,5 +65,5 @@ macro_rules! echoy {
     };
 }
 
-pub(crate) use echo;
-pub(crate) use echoy;
+pub use echo;
+pub use echoy;
