@@ -23,12 +23,12 @@ fn kernel_version(config: &String) {
 }
 
 fn check_stackprotector(config: &String) {
-    let stackprotector = "CONFIG_STACKPROTECTOR";
-    let cc_stackprotector = "CONFIG_CC_STACKPROTECTOR";
+    let stackprotector = "STACKPROTECTOR";
+    let cc_stackprotector = "CC_STACKPROTECTOR";
     let mut line = "";
-    if config.contains(format!("{}=y", stackprotector).as_str()) {
+    if config.contains(format!("CONFIG_{}=y", stackprotector).as_str()) {
         line = stackprotector;
-    } else if config.contains(format!("{}=y", cc_stackprotector).as_str()) {
+    } else if config.contains(format!("CONFIG_{}=y", cc_stackprotector).as_str()) {
         line = cc_stackprotector;
     }
     echo!(
@@ -47,12 +47,12 @@ fn check_stackprotector(config: &String) {
     if line == "" {
         return;
     }
-    let stackprotector_strong = "CONFIG_STACKPROTECTOR_STRONG";
-    let cc_stackprotector_strong = "CONFIG_CC_STACKPROTECTOR_STRONG";
+    let stackprotector_strong = "STACKPROTECTOR_STRONG";
+    let cc_stackprotector_strong = "CC_STACKPROTECTOR_STRONG";
     line = "";
-    if config.contains(format!("{}=y", stackprotector_strong).as_str()) {
+    if config.contains(format!("CONFIG_{}=y", stackprotector_strong).as_str()) {
         line = stackprotector_strong;
-    } else if config.contains(format!("{}=y", cc_stackprotector_strong).as_str()) {
+    } else if config.contains(format!("CONFIG_{}=y", cc_stackprotector_strong).as_str()) {
         line = cc_stackprotector_strong;
     }
     echo!(
@@ -82,24 +82,24 @@ pub fn check(path: PathBuf) {
         } else {
             "Disabled".red().bold()
         },
-        "CONFIG_COMPAT_BRK".blue().bold()
+        "COMPAT_BRK".blue().bold()
     );
 
     let configs = vec![
-        ("Strict /dev/mem access", "CONFIG_STRICT_DEVMEM"),
-        ("Strict I/O access to /dev/mem", "CONFIG_IO_STRICT_DEVMEM"),
-        ("Randomize SLAB freelist", "CONFIG_SLAB_FREELIST_RANDOM"),
-        ("Use a virtually-mapped stack", "CONFIG_VMAP_STACK"),
-        ("Full reference count validation", "CONFIG_REFCOUNT_FULL"),
-        ("Hardened usercopy", "CONFIG_HARDENED_USERCOPY"),
-        ("Harden common str/mem functions", "CONFIG_FORTIFY_SOURCE"),
-        ("Randomize position of kernel", "CONFIG_RANDOMIZE_BASE"),
-        ("Randomize position of memory", "CONFIG_RANDOMIZE_MEMORY"),
+        ("Strict /dev/mem access", "STRICT_DEVMEM"),
+        ("Strict I/O access to /dev/mem", "IO_STRICT_DEVMEM"),
+        ("Randomize SLAB freelist", "SLAB_FREELIST_RANDOM"),
+        ("Use a virtually-mapped stack", "VMAP_STACK"),
+        ("Full reference count validation", "REFCOUNT_FULL"),
+        ("Hardened usercopy", "HARDENED_USERCOPY"),
+        ("Harden common str/mem functions", "FORTIFY_SOURCE"),
+        ("Randomize position of kernel", "RANDOMIZE_BASE"),
+        ("Randomize position of memory", "RANDOMIZE_MEMORY"),
     ];
     for (msg, line) in configs {
         echo!(
             msg,
-            if config.contains(format!("{}=y", line).as_str()) {
+            if config.contains(format!("CONFIG_{}=y", line).as_str()) {
                 "Enabled".green().bold()
             } else {
                 "Disabled".red().bold()
