@@ -312,6 +312,7 @@ dependencies = [
  "colored",
  "efivar",
  "flate2",
+ "regex",
  "selinux",
  "sysctl",
 ]

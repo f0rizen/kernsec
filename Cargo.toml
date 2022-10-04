@@ -11,6 +11,7 @@ flate2 = "1.0.24"
 sysctl = "0.5.2"
 efivar = "0.2.1"
 selinux = "0.2.7"
+regex = "1.6.0"
 
 [profile.release]
 strip = true

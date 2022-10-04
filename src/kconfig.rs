@@ -1,5 +1,27 @@
 use crate::utils::*;
 
+fn kernel_version(config: &String) {
+    use regex::Regex;
+    let re = Regex::new(r"# Linux/.* Kernel Configuration").unwrap();
+    if !re.is_match(config) {
+        echo!("Failed to detect kernel version".on_red().bold());
+        return;
+    }
+    let v = re.captures(config).unwrap().get(0).unwrap();
+    let matches: Vec<&str> = v.as_str().split(' ').collect();
+    let version: Vec<&str> = matches[2].split('-').collect();
+
+    let splitted: Vec<&str> = version[0].split('.').collect();
+    if splitted.len() < 3
+        || splitted[0].parse::<i32>().is_err()
+        || splitted[1].parse::<i32>().is_err()
+    {
+        echo!("Failed to parse kernel version".on_red().bold());
+        return;
+    }
+    echoy!("Kernel version", version[0].blue().bold());
+}
+
 fn check_stackprotector(config: &String) {
     let stackprotector = "CONFIG_STACKPROTECTOR";
     let cc_stackprotector = "CONFIG_CC_STACKPROTECTOR";
@@ -50,6 +72,7 @@ fn check_stackprotector(config: &String) {
 
 pub fn check(path: PathBuf) {
     let config = read_config(path);
+    kernel_version(&config);
 
     check_stackprotector(&config);
     echo!(
