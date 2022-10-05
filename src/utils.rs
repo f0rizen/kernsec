@@ -73,5 +73,5 @@ macro_rules! echos {
 }
 
 pub use echo;
-pub use echoy;
 pub use echos;
+pub use echoy;
