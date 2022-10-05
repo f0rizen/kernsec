@@ -1,32 +1,7 @@
 use crate::utils::*;
 
-fn contains(config: &String, chk: &str) -> bool {
-    return config.contains(format!("CONFIG_{}=y", chk).as_str());
-}
-
-fn kernel_version(config: &String) -> Result<Vec<i32>, &str> {
-    use regex::Regex;
-    let re = Regex::new(r"# Linux/.* Kernel Configuration").unwrap();
-    if !re.is_match(config) {
-        return Err("Failed to detect kernel version");
-    }
-    let v = re.captures(config).unwrap().get(0).unwrap();
-    let matches: Vec<&str> = v.as_str().split(' ').collect();
-    let version: Vec<&str> = matches[2].split('-').collect();
-
-    let splitted: Vec<&str> = version[0].split('.').collect();
-    fn not_num(x: &str) -> bool {
-        return x.parse::<i32>().is_err();
-    }
-    let mut ans: Vec<i32> = Vec::new();
-    for i in splitted {
-        if not_num(i) {
-            return Err("Failed to parse kernel version");
-        }
-        ans.push(i.parse().unwrap());
-    }
-    return Ok(ans);
-}
+mod utils;
+use crate::kconfig::utils::*;
 
 fn check_stackprotector(config: &String, version: &Vec<i32>) {
     let stackprotector = if *version < vec![4, 18] {
