@@ -37,7 +37,7 @@ pub fn check() {
     ];
     for i in 0..=18 {
         if (tainted_ctl >> i) & 1 == 1 {
-            echoy!(format!("{} (#{})", reasons[i], i));
+            echos!(format!("{} (#{})", reasons[i], i));
         }
     }
 }

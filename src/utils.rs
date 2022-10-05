@@ -58,12 +58,20 @@ macro_rules! echo {
 #[macro_export]
 macro_rules! echoy {
     ($msg:expr) => {
-        println!("{:tab$} {} {}", "", "*".yellow().bold(), $msg)
+        println!("{} {}", "*".yellow().bold(), $msg);
     };
     ($msg:expr, $ans:expr) => {
         println!("{} {:width1$}{}", "*".yellow().bold(), $msg, $ans);
     };
 }
 
+#[macro_export]
+macro_rules! echos {
+    ($msg:expr) => {
+        println!("{:tab$} {} {}", "", "*".yellow().bold(), $msg);
+    };
+}
+
 pub use echo;
 pub use echoy;
+pub use echos;
