@@ -6,12 +6,12 @@ mod selinux;
 mod sysctl;
 mod tainted;
 
-mod options;
+mod cli;
 
 fn main() {
     use colored::Colorize;
 
-    let args: options::Args = clap::Parser::parse();
+    let args: cli::Args = clap::Parser::parse();
     println!(
         "{} Kernel config: {}\n",
         "*".yellow().bold(),

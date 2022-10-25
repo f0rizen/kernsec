@@ -6,11 +6,11 @@ license-file = "LICENSE"
 
 [dependencies]
 colored = "2.0.0"
-clap = { version = "3.2.17", features = ["derive"] }
+clap = { version = "4.0.18", features = ["derive"] }
 flate2 = "1.0.24"
 sysctl = "0.5.2"
 efivar = "0.2.1"
-selinux = "0.2.7"
+selinux = "0.3.0"
 regex = "1.6.0"
 
 [profile.release]
