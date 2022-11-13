@@ -9,7 +9,7 @@ fn decode_gz(file: File) -> String {
     let mut decoder = GzDecoder::new(file);
     let mut ans = String::new();
     decoder.read_to_string(&mut ans).unwrap();
-    return ans;
+    ans
 }
 
 pub fn read_config(path: PathBuf) -> String {
@@ -24,19 +24,19 @@ pub fn read_config(path: PathBuf) -> String {
     } else {
         file.read_to_string(&mut text).unwrap();
     }
-    return text;
+    text
 }
 
 pub fn get_ctl(name: &str) -> Result<i32, sysctl::SysctlError> {
     use sysctl::{Ctl, Sysctl};
     let ctl = Ctl::new(name)?;
     let val = ctl.value_string()?.parse().unwrap();
-    return Ok(val);
+    Ok(val)
 }
 
 #[allow(non_upper_case_globals)]
 mod constants {
-    pub const tab:    usize =  2;
+    pub const tab: usize = 2;
     pub const width1: usize = 40;
     pub const width2: usize = 14;
 }

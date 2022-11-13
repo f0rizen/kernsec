@@ -3,7 +3,7 @@ use crate::utils::*;
 mod utils;
 use crate::kconfig::utils::*;
 
-fn check_stackprotector(config: &String, version: &Vec<i32>) {
+fn check_stackprotector(config: &str, version: &Vec<i32>) {
     let stackprotector = if *version < vec![4, 18] {
         "CC_STACKPROTECTOR"
     } else {

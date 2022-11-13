@@ -35,9 +35,9 @@ pub fn check() {
         "Kernel was built with the struct randomization plugin",
         "An in-kernel test has been run",
     ];
-    for i in 0..=18 {
-        if (tainted_ctl >> i) & 1 == 1 {
-            echos!(format!("{} (#{})", reasons[i], i));
+    for (i, item) in reasons.iter().enumerate() {
+        if (tainted_ctl >> i) % 2 == 1 {
+            echos!(format!("{} (#{})", item, i));
         }
     }
 }

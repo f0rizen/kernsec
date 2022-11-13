@@ -1,8 +1,8 @@
-pub fn contains(config: &String, chk: &str) -> bool {
+pub fn contains(config: &str, chk: &str) -> bool {
     return config.contains(format!("CONFIG_{}=y", chk).as_str());
 }
 
-pub fn kernel_version(config: &String) -> Result<Vec<i32>, &str> {
+pub fn kernel_version(config: &str) -> Result<Vec<i32>, &str> {
     use regex::Regex;
     let re = Regex::new(r"# Linux/.* Kernel Configuration").unwrap();
     if !re.is_match(config) {
@@ -17,7 +17,7 @@ pub fn kernel_version(config: &String) -> Result<Vec<i32>, &str> {
         return Err("Kernel version does not match x.y.z");
     }
     fn not_num(x: &str) -> bool {
-        return x.parse::<i32>().is_err();
+        x.parse::<i32>().is_err()
     }
     let mut ans: Vec<i32> = Vec::new();
     for i in splitted {
@@ -26,7 +26,7 @@ pub fn kernel_version(config: &String) -> Result<Vec<i32>, &str> {
         }
         ans.push(i.parse().unwrap());
     }
-    return Ok(ans);
+    Ok(ans)
 }
 
 #[cfg(test)]

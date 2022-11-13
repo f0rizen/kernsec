@@ -10,11 +10,9 @@ fn efivar_read(manager: Box<dyn VarManager>, name: &str) -> (usize, Vec<u8>) {
     let name = VariableName::from_str(name).unwrap();
 
     match manager.read(&name, &mut buf[..]) {
-        Ok((size, _)) => {
-            return (size, buf);
-        }
+        Ok((size, _)) => (size, buf),
         Err(error) => panic!("{}", error),
-    };
+    }
 }
 
 pub fn check() {
